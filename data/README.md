@@ -1,6 +1,6 @@
-# Required study inputs
+# Included study inputs
 
-No observation-level study data are fabricated or bundled as placeholders. The exporters create the files below from the authors' saved experiment.
+These files were exported from the authors' recovered experiment on 20 November 2026. They contain actual saved study inputs, not synthetic placeholders. Original row order and sample identities are preserved; image paths are class-relative. `file_checksums.json` verifies all 96 data/provenance files, excluding this README and the checksum manifest itself.
 
 | Path | Required content |
 |---|---|
@@ -12,6 +12,8 @@ No observation-level study data are fabricated or bundled as placeholders. The e
 | `review/ResNet_individual_seed_42.csv` | Individual ResNet/focal/VectorScaling decisions; analogous files for seeds 123 and 2026. |
 | `review/Swin_uncalibrated_seed_42.csv` | Swin/CE/uncalibrated decisions; analogous files for seeds 123 and 2026. |
 | `artifact_provenance.json`, `review/input_provenance.json` | Hashes and source correspondence produced by the exporters. |
+| `frozen_ensemble.json` | Original saved Vector Scaling parameters, threshold, development identities and provenance; compatible with `run_ensemble.py evaluate`. |
+| `file_checksums.json` | SHA-256 checks for the portable inputs. |
 
 All seven review CSVs require `sample_id,true_label,predicted_label,prob_negative,released,operating_threshold`. Classes are Negative=0, Positive=1, Uncertain=2. `released` is a boolean or 0/1. Each file must contain the same 150 images, 50 per class. Thresholds must be constant within a policy, and stored release flags must agree with the frozen decision rule. The comparison loader aligns by sample ID and checks reference labels; it never pairs rows by position alone.
 
