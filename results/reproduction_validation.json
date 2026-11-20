@@ -1,0 +1,347 @@
+{
+  "validation_date": "2026-11-20",
+  "archive": {
+    "archive_sha256": "8cd40561e9bf4d38558d9ce2ebc6206da196be00d609d50cd7b648281920feb1",
+    "entries": 1778,
+    "bytes": 33470757,
+    "verified_files": 1777,
+    "missing_priority_files": [],
+    "external_source_found": false
+  },
+  "statistics": {
+    "status": "PASS",
+    "comparison_tolerance": {
+      "rtol": 1e-12,
+      "atol": 1e-14
+    },
+    "analyses": [
+      {
+        "new_file": "paired_exact_tests_holm.csv",
+        "reference_file": "11_revisions_reviewers/statistical_analysis/paired_exact_tests_holm.csv",
+        "rows": 6,
+        "columns": [
+          "Comparison",
+          "Accuracy_A_only_correct",
+          "Accuracy_B_only_correct",
+          "McNemar_p_accuracy",
+          "Negative_released_only_A",
+          "Negative_released_only_B",
+          "McNemar_p_TNRR",
+          "Unsafe_ensemble",
+          "Unsafe_comparator",
+          "McNemar_p_accuracy_Holm",
+          "McNemar_p_TNRR_Holm"
+        ],
+        "match": true,
+        "mismatch_columns": [],
+        "max_absolute_numeric_difference": 0.0
+      },
+      {
+        "new_file": "paired_bootstrap_metric_differences.csv",
+        "reference_file": "11_revisions_reviewers/statistical_analysis/paired_bootstrap_metric_differences.csv",
+        "rows": 30,
+        "columns": [
+          "Comparison",
+          "Metric",
+          "Ensemble",
+          "Comparator",
+          "Delta_A_minus_B",
+          "CI_lower_95",
+          "CI_upper_95",
+          "CI_excludes_zero"
+        ],
+        "match": true,
+        "mismatch_columns": [],
+        "max_absolute_numeric_difference": 3.1848438816761693e-19
+      },
+      {
+        "new_file": "paired_bootstrap_iterations.csv",
+        "reference_file": "11_revisions_reviewers/statistical_analysis/paired_bootstrap_iterations.csv",
+        "rows": 90000,
+        "columns": [
+          "Comparison",
+          "Metric",
+          "Iteration",
+          "Delta_A_minus_B"
+        ],
+        "match": true,
+        "mismatch_columns": [],
+        "max_absolute_numeric_difference": 1.0061396160665481e-16
+      },
+      {
+        "new_file": "single_policy_bootstrap_summary.csv",
+        "reference_file": "10_ensemble_resnet18_focal_vector_scaling/05_results/bootstrap_recomputed_for_manuscript/bootstrap_summary.csv",
+        "rows": 6,
+        "columns": [
+          "metric",
+          "estimate",
+          "ci_lower_95",
+          "ci_upper_95",
+          "bootstrap_iterations",
+          "bootstrap_seed",
+          "bootstrap_method"
+        ],
+        "match": true,
+        "mismatch_columns": [],
+        "max_absolute_numeric_difference": 1.0061396160665481e-16
+      },
+      {
+        "new_file": "single_policy_bootstrap_iterations.csv",
+        "reference_file": "10_ensemble_resnet18_focal_vector_scaling/05_results/bootstrap_recomputed_for_manuscript/bootstrap_iterations.csv",
+        "rows": 2000,
+        "columns": [
+          "coverage",
+          "negative_ece",
+          "negative_brier",
+          "negative_nll",
+          "npv",
+          "tnrr",
+          "released",
+          "unsafe",
+          "bootstrap_iteration"
+        ],
+        "match": true,
+        "mismatch_columns": [],
+        "max_absolute_numeric_difference": 2.0036056147532122e-16
+      },
+      {
+        "new_file": "false_negative_analysis.csv",
+        "reference_file": "11_revisions_reviewers/false_negative_analysis.csv",
+        "rows": 4,
+        "match": true,
+        "mismatch_columns": [],
+        "additional_computed_rows": 3
+      }
+    ],
+    "limitations": [
+      "Inputs recovered from saved experiment; this checks numerical reanalysis, not retraining",
+      "Independent patient grouping is unknown",
+      "Three seeds share the same evaluation images"
+    ]
+  },
+  "training_artifacts": {
+    "split_sha256": "3e8e49d6f7ec2bbf30d36d0795bee99c5261bae5d9318276182d56d75ce5055c",
+    "split_sample_ids_verified_as_original_path_hash": true,
+    "training_runs_verified": 27,
+    "histories_20_epochs_each": true,
+    "all_best_epochs_and_scores_match_metadata": true,
+    "three_reviewer_histories_match_original_logs": true,
+    "regenerated_mean_sd_max_abs_diff": 1.1102230246251565e-16,
+    "pilot_selected_gamma": 2,
+    "computed_duration_matches_original_table": true,
+    "parameter_counts_match_all_27_metadata_files": true,
+    "missing_trainable_parameter_field": [
+      "resnet18/label_smoothing/2026"
+    ],
+    "recovered_images_available": false,
+    "checkpoint_weights_available": false,
+    "issues": [],
+    "timing_overhead_seconds_min": 1.8292748928070068,
+    "timing_overhead_seconds_max": 26.10792565345764,
+    "limitations": [
+      "No image readability/hash audit repeated: image files absent",
+      "No GPU training, logits inference or latency benchmark rerun",
+      "Completed histories do not prove no historical restarts or bitwise RNG reproducibility"
+    ]
+  },
+  "calibration_and_ensemble_refit": {
+    "runtime": {
+      "python": "3.11.7",
+      "platform": "macOS-27.0.1-arm64-arm-64bit",
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "scipy": "1.16.0",
+      "sklearn": "1.7.1"
+    },
+    "factorial": {
+      "seed_level_conditions": 162,
+      "split_evaluations": 324,
+      "optimizer_failures": 0,
+      "all_ids_labels_matched": true,
+      "total_prediction_disagreements": 0,
+      "total_release_disagreements": 0,
+      "maximum_probability_difference": 1.642583565830691e-07,
+      "metric_maximum_differences": {
+        "accuracy": 1.1102230246251565e-16,
+        "confusion_00": 0.0,
+        "confusion_01": 0.0,
+        "confusion_02": 0.0,
+        "confusion_10": 0.0,
+        "confusion_11": 0.0,
+        "confusion_12": 0.0,
+        "confusion_20": 0.0,
+        "confusion_21": 0.0,
+        "confusion_22": 0.0,
+        "coverage": 8.326672684688674e-17,
+        "macro_f1": 1.1102230246251565e-16,
+        "manual_review_rate": 0.0,
+        "negative_adaptive_ece": 6.150465685361706e-09,
+        "negative_auroc": 0.0,
+        "negative_binary_brier": 6.580147980314588e-10,
+        "negative_binary_nll": 7.20886561694778e-08,
+        "negative_fixed_ece": 6.150465678422812e-09,
+        "negative_predictive_value": 0.0,
+        "number_of_releases": 0.0,
+        "number_of_samples": 0.0,
+        "selected_threshold": 2.0949107337742134e-08,
+        "total_true_negatives": 0.0,
+        "total_true_positives": 0.0,
+        "total_true_uncertain": 0.0,
+        "true_negative_release_rate": 0.0,
+        "true_negative_releases": 0.0,
+        "unsafe_positive_releases": 0.0,
+        "unsafe_rate_among_releases": 0.0,
+        "unsafe_rate_upper_95_one_sided": 9.71445146547012e-17,
+        "unsafe_releases": 0.0,
+        "unsafe_uncertain_releases": 0.0,
+        "zero_observed_unsafe_releases": 0.0
+      },
+      "method_maximum_probability_differences": {
+        "beta_negative": 4.8960835385969403e-14,
+        "dirichlet": 1.3059242576218821e-10,
+        "isotonic_negative": 3.7636560534792807e-13,
+        "temperature_scaling": 7.718935601808141e-09,
+        "uncalibrated": 3.3306690738754696e-16,
+        "vector_scaling": 1.642583565830691e-07
+      },
+      "historical_csv_replay_note": "Using the original default pandas CSV parser reproduces all release decisions. A round_trip replay of old saved probabilities at old thresholds loses one boundary release in 15 development-only conditions by 1.11e-16; it changes none of the original final-test decisions. See serialization_boundary_audit.json."
+    },
+    "ensemble": {
+      "raw_logits": [
+        {
+          "split": "calibration",
+          "max_raw_mean_logit_difference": 4.440892098500626e-16,
+          "matching_labels": true
+        },
+        {
+          "split": "threshold_selection",
+          "max_raw_mean_logit_difference": 4.440892098500626e-16,
+          "matching_labels": true
+        },
+        {
+          "split": "final_test",
+          "max_raw_mean_logit_difference": 8.881784197001252e-16,
+          "matching_labels": true
+        }
+      ],
+      "original_scales": [
+        1.5820260828996238,
+        0.7360359425602601,
+        0.8957942766862516
+      ],
+      "refitted_scales": [
+        1.5820258836192198,
+        0.7360358157508755,
+        0.8957945376251124
+      ],
+      "original_biases": [
+        0.2287951403873245,
+        -0.33283878819804785,
+        0.10404364781072332
+      ],
+      "refitted_biases": [
+        0.22879559547390824,
+        -0.3328387539863978,
+        0.10404315851248953
+      ],
+      "max_scale_difference": 2.6093886085210016e-07,
+      "max_bias_difference": 4.8929823379118e-07,
+      "original_threshold": 0.967785046190242,
+      "refitted_threshold": 0.9677850488060855,
+      "threshold_difference": 2.6158435417755754e-09,
+      "max_probability_difference": 9.620900026652279e-08,
+      "prediction_disagreements": 0,
+      "release_disagreements": 0,
+      "evaluation_metrics": {
+        "number_of_samples": 150,
+        "accuracy": 0.9266666666666666,
+        "macro_f1": 0.9266593325999266,
+        "negative_fixed_ece": 0.010579147068695872,
+        "negative_adaptive_ece": 0.010579147068695886,
+        "negative_fixed_mce": 0.14794191022711534,
+        "negative_adaptive_mce": 0.09485920588001329,
+        "negative_binary_brier": 0.0008124201115568052,
+        "negative_binary_nll": 0.011019402945484345,
+        "negative_auroc": 1.0,
+        "multiclass_nll": 0.18895629975742972,
+        "multiclass_brier": 0.10819634941138034,
+        "top_label_ece": 0.06912476884931162,
+        "positive_misclassified_count": 5,
+        "positive_to_negative_count": 0,
+        "positive_to_uncertain_count": 5,
+        "confusion_00": 50,
+        "confusion_01": 0,
+        "confusion_02": 0,
+        "confusion_10": 0,
+        "confusion_11": 45,
+        "confusion_12": 5,
+        "confusion_20": 0,
+        "confusion_21": 6,
+        "confusion_22": 44,
+        "selected_threshold": 0.9677850488060855,
+        "number_of_releases": 39,
+        "coverage": 0.26,
+        "manual_review_rate": 0.74,
+        "true_negative_releases": 39,
+        "unsafe_releases": 0,
+        "unsafe_positive_releases": 0,
+        "unsafe_uncertain_releases": 0,
+        "true_negative_release_rate": 0.78,
+        "negative_predictive_value": 1.0,
+        "unsafe_rate_among_releases": 0.0,
+        "unsafe_rate_upper_95_one_sided": 0.07393758892668656,
+        "operational_positive_fnr": 0.0,
+        "operational_positive_fnr_upper_95": 0.058155079116972264,
+        "operational_nonnegative_fnr": 0.0,
+        "operational_nonnegative_fnr_upper_95": 0.029513049607039932,
+        "total_true_negatives": 50,
+        "total_true_positives": 50,
+        "total_true_uncertain": 50,
+        "zero_observed_unsafe_releases": true,
+        "frozen_policy_sha256": "47382330025fff6c81ca122c55c6cd9ac1ec41e699149e4bd3926dcfdf5c52ce",
+        "test_logit_hashes": {
+          "logits/resnet18/focal_loss/gamma_2/seed_42/final_test.csv": "bf2f7bad656e51ee4137b726e3ab449d7cee4edd885384df6f85d92029ea712f",
+          "logits/resnet18/focal_loss/gamma_2/seed_123/final_test.csv": "ccaae82a5687195be51f0176898374e504b33502376cca7d68d30a96b068725a",
+          "logits/resnet18/focal_loss/gamma_2/seed_2026/final_test.csv": "fd3ad6cf6313b440d28dcc161eca1977323c73e9319ea7f4dafb6c40ee177a69"
+        }
+      }
+    }
+  },
+  "sensitivity": {
+    "seed_level_evaluations": 16200,
+    "repartitions": 100,
+    "all_release_counts_unsafe_counts_and_macro_f1_match": true,
+    "all_100_winners_match": true,
+    "all_selected_configuration_ranks_match": true,
+    "selected_configuration_wins": 15,
+    "selected_configuration_top3": 25,
+    "ensemble_all_100_release_counts_match": true,
+    "max_seed_policy_threshold_difference": 2.9989281712383686e-06,
+    "max_ensemble_threshold_difference": 1.8097793685889485e-07,
+    "optimizer_failures": 0
+  },
+  "supplement": {
+    "S1_15_reliability_bins_and_intervals_match": true,
+    "S2_seed_releases": [
+      36,
+      41,
+      45
+    ],
+    "S3_confusion_and_referral_match": true
+  },
+  "original_frozen_ensemble_replay": {
+    "stored_threshold": 0.967785046190242,
+    "parameters_refitted": false,
+    "all_predictions_and_release_decisions_match": true,
+    "max_probability_difference": 4.440892098500626e-16,
+    "released": 39,
+    "unsafe": 0
+  },
+  "limitations": [
+    "No network retraining or checkpoint inference was repeated",
+    "Image files and network weights were not recovered",
+    "External corrected-ensemble script source remains absent; estimator and recovered parameters were validated separately",
+    "Floating-point refits differ slightly across environments; predictions and operating counts agree",
+    "Patient groups remain unknown; evaluation was previously inspected"
+  ]
+}

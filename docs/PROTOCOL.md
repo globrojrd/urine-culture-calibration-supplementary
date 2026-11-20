@@ -16,7 +16,7 @@ Training uses ImageNet-pretrained ResNet-18, EfficientNetV2-S and Swin-T; CE, la
 
 Six probability conditions are uncalibrated, temperature scaling, Vector Scaling, Dirichlet, Negative-event Beta and Negative-event Isotonic calibration. Vector Scaling uses positive exp(log-scale) multipliers, centered biases and L2 strength 1e-3. The primary and sensitivity implementations retain their respective numerical clipping conventions. Selection maximizes development coverage subject to zero observed unsafe releases; tied policies use the higher threshold. A no-release policy is feasible, but its NPV and conditional unsafe rate are undefined.
 
-The corrected historical ensemble output records a threshold of 0.967785046190, 42/150 development releases and 39/150 evaluation releases. These are verification targets, not constants inserted into prediction code. The missing external correction source prevents claiming exact historical ensemble reconstruction before checking the saved inputs.
+The corrected historical ensemble records a threshold of 0.967785046190, 42/150 development releases and 39/150 evaluation releases. Recovered inputs now verify these counts. `data/frozen_ensemble.json` contains the original fitted parameters as an explicit input, while the refit command estimates parameters from calibration data. The reconstructed refit agrees on all evaluation decisions; the original external script source has not been recovered.
 
 ## Statistical endpoints
 

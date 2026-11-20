@@ -1,0 +1,8 @@
+Metric,Events,Denominator,Observed rate,One-sided 95% upper bound
+Pre-abstention Positive FNR,5,50,0.1,0.19883300251641847
+Operational Positive FNR,0,50,0.0,0.058155079116972264
+Non-Negative unsafe release rate,0,100,0.0,0.029513049607039932
+Unsafe rate among releases,0,39,0.0,0.07393758892668656
+Overall unsafe release rate,0,150,0.0,0.019773438164508494
+Positive classified as Negative,0,50,0.0,0.058155079116972264
+Positive classified as Uncertain,5,50,0.1,0.19883300251641847

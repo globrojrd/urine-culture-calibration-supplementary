@@ -12,4 +12,4 @@ The supplied three-page `Supplementary_Material.pdf` was read and visually check
 8. The earlier single-policy bootstrap code computes NPV, producing a degenerate interval when no unsafe release is present. The manuscript should say that this bootstrap interval was not interpreted as safety evidence; saying NPV was never bootstrapped contradicts the source. Report the exact one-sided unsafe-release bound instead.
 9. Threshold selection has 50 Negative, 49 Positive and 51 Uncertain images. Evaluation and calibration have 50 per class. The combined sensitivity cohort has 100/99/101; avoid describing every partition as exactly balanced.
 
-These notes identify specific corrections. They are not a claim that the existing manuscript or supplementary PDF has already been edited.
+The manuscript's EfficientNet accumulation and NPV-bootstrap sentences were corrected on 20 November 2026 after checking the recovered files. The existing supplementary PDF has not been regenerated; its duplicated paragraph and no-release caption remain editorial items to correct in its source. The regenerated numerical supplementary assets were checked against the recovered original tables.

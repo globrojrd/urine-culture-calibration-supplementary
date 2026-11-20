@@ -6,9 +6,9 @@ The code was extracted from the authors' experiment notebook, retaining the fina
 
 ## Reproduction status
 
-The code has been checked against the notebook implementations on synthetic fixtures. **The original image-level prediction CSVs, split manifest, logit tables, training histories, images and checkpoints are not included in this initial code package.** Consequently, the reported study results have not yet been independently regenerated from this repository. Exporters below recover the existing experiment files without retraining. Update this status only after those artifacts are added and the commands succeed.
+**The saved study inputs were recovered and numerically reanalysed on 20 November 2026.** This data release includes the original split identities, 81 logit tables, three training histories, seven frozen-policy prediction tables and the original fitted ensemble parameters. It reproduces the six exact paired tests, all 30 paired-bootstrap summaries, the separate single-policy bootstrap and false-negative bounds. Refitting all 162 conditions preserves every evaluation prediction and release decision. The 100 development repartitions preserve all operating counts, winners and selected-configuration ranks. See [validation](docs/VALIDATION.md) and the [machine-readable report](results/reproduction_validation.json).
 
-The notebook called an external corrected-ensemble script whose source was not embedded. `urineculture/ensemble.py` is a documented reconstruction from the available mean-logit, calibration and threshold-selection implementations; it is not a recovered copy of that missing file. Numerical agreement with the historical fitted ensemble remains to be checked using the original logits.
+The external corrected-ensemble script itself remains unavailable. Its saved fitted parameters and threshold were recovered, and replaying them reproduces all 150 decisions with maximum probability difference below 5e-16. The documented reconstruction also refits to the same decisions; floating-point parameters differ slightly across environments. Images and network checkpoints are not bundled, and no network retraining or external clinical validation is claimed.
 
 ## Contents
 
@@ -18,7 +18,8 @@ The notebook called an external corrected-ensemble script whose source was not e
 | `urineculture/` | Reusable data, training, calibration, policy, ensemble, statistics, figures and sensitivity functions. |
 | `scripts/` | Commands to export inputs and run each analysis. |
 | `tests/` | Synthetic protocol and integration tests, not study observations. |
-| `data/` | Input specification; actual study CSVs must be exported and added. |
+| `data/` | Portable original study inputs, original fitted ensemble policy, hashes and schemas. |
+| `results/` | Reproduced numerical summaries, real training curves and validation evidence. |
 | `docs/` | Source provenance, reproduction protocol, supplementary corrections and validation scope. |
 
 The public image dataset is [Mendeley Data, version 3, DOI 10.17632/xrbtd74pfj.3](https://doi.org/10.17632/xrbtd74pfj.3). It is not redistributed here. Images must be obtained from that source and kept in `Negative/`, `Positive/`, and `Uncertain/` directories. Reference labels describe culture images, not symptomatic infection.
@@ -31,13 +32,16 @@ Use a separate Python environment. The notebook recorded Python 3.12.13. `requir
 python -m pip install -r requirements-analysis.txt
 python -m pip install --no-deps -e .
 python -m unittest discover -s tests -v
+python scripts/verify_reproduction.py
 ```
 
 For training or checkpoint inference, also install `requirements.txt`. The recorded training environment used PyTorch 2.11.0, torchvision 0.26.0, CUDA 12.8 and an NVIDIA L4. These original dependencies were not reinstalled during extraction; local verification used the versions listed in `docs/VALIDATION.md`. GPU timing and freshly trained weights can differ across environments.
 
-## Recover the authors' saved experiment artifacts
+The final command verifies input hashes, regenerates the reported statistics and replays the original ensemble from saved logits and parameters. It requires neither Google Drive access nor a GPU. Results are written to `outputs/reproduction_check`; use `--output` with a fresh directory to repeat it.
 
-These commands are for the authors with access to the original experiment folder. They read the saved files and write a new, portable export outside that folder. They do not modify the experiment or retrain any model. In Colab, mount Google Drive first.
+## Provenance: authors' artifact-export commands
+
+The portable inputs are already included. The following commands document how the authors exported them from the original experiment folder. Readers can skip this step. The commands read saved files and write a new export without modifying the experiment or retraining any model.
 
 ```bash
 python scripts/export_artifacts.py \
@@ -48,7 +52,7 @@ python scripts/export_review_inputs.py \
   --output /content/public_urineculture_data/review
 ```
 
-Copy the exported directory's contents into this repository's `data/`. The exporters preserve sample IDs, reference labels and saved row order; remove machine-specific image paths; and record source/output hashes. Exported splits contain class-relative paths. Do not regenerate the study manifest by scanning a directory: the original input order and path-derived IDs matter.
+The exporters preserve sample IDs, reference labels and saved row order; remove machine-specific image paths; and record source/output hashes. Exported splits contain class-relative paths. The recovered original split-file hash matches the notebook. Do not regenerate the study manifest by scanning a directory: the original input order and path-derived IDs matter.
 
 ## Recompute the reviewer-requested statistics
 
@@ -63,6 +67,15 @@ Outputs include exact two-sided McNemar tests, Holm-adjusted p-values, 3,000 pai
 ## Refit calibration and frozen policies from saved logits
 
 Requires the portable `data/experiments.csv` and 81 logit tables. Network training is not needed for this route.
+
+To replay the **original fitted ensemble without refitting**, run:
+
+```bash
+python scripts/run_ensemble.py evaluate --manifest data/experiments.csv \
+  --frozen-policy data/frozen_ensemble.json --output outputs/ensemble_original
+```
+
+To independently refit the factorial conditions and ensemble, run:
 
 ```bash
 python scripts/evaluate_factorial.py develop --manifest data/experiments.csv --output outputs/factorial
@@ -83,6 +96,8 @@ python scripts/compare_policies.py --inputs outputs/refitted_comparison_inputs -
 ```
 
 Keep refitted outputs distinct from the original frozen predictions when verifying historical results.
+
+The local refit recovered 39/150 releases, zero unsafe releases and the same three-class predictions. Its threshold differs from the saved value by approximately 2.62e-9. These small numerical differences are documented rather than forcing the optimizer to reproduce recorded decimal strings.
 
 ## Figures, supplementary assets and sensitivity
 

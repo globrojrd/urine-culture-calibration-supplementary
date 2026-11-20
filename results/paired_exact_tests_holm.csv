@@ -1,0 +1,7 @@
+Comparison,Accuracy_A_only_correct,Accuracy_B_only_correct,McNemar_p_accuracy,Negative_released_only_A,Negative_released_only_B,McNemar_p_TNRR,Unsafe_ensemble,Unsafe_comparator,McNemar_p_accuracy_Holm,McNemar_p_TNRR_Holm
+ResNet_individual_seed_42,4,3,1.0,3,0,0.25,0,0,1.0,1.0
+Swin_uncalibrated_seed_42,3,9,0.14599609375,3,5,0.7265625,0,0,0.625,1.0
+ResNet_individual_seed_123,3,0,0.25,1,3,0.625,0,0,0.75,1.0
+Swin_uncalibrated_seed_123,8,7,1.0,5,4,1.0,0,0,1.0,1.0
+ResNet_individual_seed_2026,4,0,0.125,0,6,0.03125,0,0,0.625,0.1875
+Swin_uncalibrated_seed_2026,1,7,0.0703125,3,5,0.7265625,0,0,0.421875,1.0

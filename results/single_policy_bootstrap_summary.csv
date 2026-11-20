@@ -1,0 +1,7 @@
+metric,estimate,ci_lower_95,ci_upper_95,bootstrap_iterations,bootstrap_seed,bootstrap_method,interpretation
+coverage,0.26,0.22,0.29333333333333333,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Conditional image-level interval
+negative_ece,0.010579146950092254,0.007005296765338182,0.014766119955892627,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Conditional image-level interval
+negative_brier,0.0008124203398653849,0.00037422639626698783,0.0013732628125143732,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Conditional image-level interval
+negative_nll,0.011019402961414354,0.007195810518053282,0.015519607915583678,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Conditional image-level interval
+npv,1.0,1.0,1.0,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Degenerate NPV bootstrap is not a safety guarantee
+tnrr,0.78,0.66,0.88,2000,20260730,Stratified percentile bootstrap preserving Negative/non-Negative counts,Conditional image-level interval

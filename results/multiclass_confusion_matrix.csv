@@ -1,0 +1,4 @@
+Reference,Predicted Negative,Predicted Positive,Predicted Uncertain
+Negative,50,0,0
+Positive,0,45,5
+Uncertain,0,6,44
