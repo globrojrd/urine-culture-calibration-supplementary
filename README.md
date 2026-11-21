@@ -14,7 +14,8 @@ The external corrected-ensemble script itself remains unavailable. Its saved fit
 
 | Location | Purpose |
 |---|---|
-| `Supplementary_Material.pdf` | Existing supplementary document: reliability, computational measurements, seed policies, risk–coverage and confusion tables. |
+| `Supplementary_Material.pdf` | Revised 21 November 2026: reliability, computational measurements, seed policies, risk–coverage, confusion and release counts. |
+| `Statistical_Supplement.pdf` | Complete 30 paired-bootstrap estimates, six exact comparisons, safety denominators and single-policy intervals. |
 | `urineculture/` | Reusable data, training, calibration, policy, ensemble, statistics, figures and sensitivity functions. |
 | `scripts/` | Commands to export inputs and run each analysis. |
 | `tests/` | Synthetic protocol and integration tests, not study observations. |
@@ -109,7 +110,7 @@ python scripts/make_supplement.py --inputs data/review --factorial outputs/facto
 python scripts/development_sensitivity.py --manifest data/experiments.csv --output outputs/sensitivity
 ```
 
-The two reviewer figures use actual measured histories and actual dataset images; no images or curves are synthesized. Supplementary commands generate S1 reliability assets, S2 seed-policy/risk–coverage assets, S3 confusion/release tables and S4 counts. They do not overwrite the existing supplementary PDF. See `docs/SUPPLEMENT_NOTES.md` for required textual corrections. The 100-repartition sensitivity analysis uses only the pooled calibration/threshold cohort and fixed network logits; it may take substantial CPU time.
+The two reviewer figures use actual measured histories and actual dataset images; no images or curves are synthesized. Supplementary commands generate S1 reliability assets, S2 seed-policy/risk–coverage assets, S3 confusion/release tables and S4 counts. They generate numerical assets without overwriting the supplementary PDFs. The revised PDFs incorporate the documented textual corrections; see `docs/SUPPLEMENT_NOTES.md`. The 100-repartition sensitivity analysis uses only the pooled calibration/threshold cohort and fixed network logits; it may take substantial CPU time.
 
 The optional CUDA benchmark is `python scripts/benchmark_inference.py --output outputs/benchmark`. As in the source notebook, this measures network architecture forward passes with random weights and synthetic inputs after 50 warm-ups and 300 timed passes. It does not regenerate recorded training times or accuracy.
 
